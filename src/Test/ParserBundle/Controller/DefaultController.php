@@ -2,12 +2,18 @@
 
 namespace Test\ParserBundle\Controller;
 
-/**
- * Class DefaultController
- *
- * @author Sergey Kuprianov <smoke> <sergey.kuprianow@gmail.com>
- */
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
 class DefaultController extends Controller
 {
-
+    /**
+     * @Route("/hello/{name}")
+     * @Template()
+     */
+    public function indexAction($name)
+    {
+        return array('name' => $name);
+    }
 }
