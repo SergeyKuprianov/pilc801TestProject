@@ -1,0 +1,10 @@
+test_frontend:
+    resource: "@TestFrontendBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+test_parser:
+    resource: "@TestParserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

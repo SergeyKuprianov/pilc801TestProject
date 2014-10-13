@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+    <div class="panel-heading">История запусков парсера (по убыванию)</div>
+    <div class="panel-body">
+        {% if runsHistory|length > 0 %}
+            <ol>
+                {% for runHistory in runsHistory %}
+                    <li>
+                        {{ runHistory.startDate|date("d.m.Y H:i:s") }}
+                        -
+                        {{ runHistory.endDate|date("d.m.Y H:i:s") }}
+                    </li>
+                {% endfor %}
+            </ol>
+        {% else %}
+            Нет истории запусков
+        {% endif %}
+    </div>
+</div>

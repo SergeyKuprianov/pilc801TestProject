@@ -1,0 +1,39 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Test project{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="page-header">
+            <h1>Тестовый проект</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                {% include "TestFrontendBundle:Frontend:regions.html.twig" with { regions: regions, currentRegionId: currentRegionId } %}
+                {% include "TestFrontendBundle:Frontend:runsHistory.html.twig" with { runsHistory: runsHistory } %}
+                {% include "TestFrontendBundle:Frontend:additionalActions.html.twig" %}
+            </div>
+
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    {% include "TestFrontendBundle:Frontend:actions.html.twig" with { actionsPagination: actionsPagination } %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="startParserUrl" value="{{ path('startParser') }}" />
+    <input type="hidden" id="clearDatabaseUrl" value="{{ path('clearDatabase') }}" />
+    <input type="hidden" id="homepageUrl" value="{{ path('homepage', {'regionId': 'all'}) }}" />
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery-2.1.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/spin.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.spin.js') }}"></script>
+{% endblock %}

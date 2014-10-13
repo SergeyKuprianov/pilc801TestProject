@@ -1,0 +1,59 @@
+<div class="panel-heading">Список акций</div>
+<div class="panel-body">
+    <div id="spinnerBlock"></div>
+    <div id="actionsBlock">
+        {% if actionsPagination|length > 0 %}
+            {% for action in actionsPagination %}
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-18 col-md-12">
+                                <h2><small>{{ action.actionName }}</small></h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-md-3">
+                                <a href="{{ asset(action.getInternalFileWebPath()) }}" target="_blank" class="thumbnail">
+                                    <img src="{{ asset(action.getInternalFileWebPath()) }}" alt="Action">
+                                </a>
+
+                                <a href="{{ action.originalFilePath }}" class="btn btn-primary btn-block" target="_blank">Оригинал</a>
+                            </div>
+                            <div class="col-xs-12 col-md-9">
+                                <form class="form-horizontal" role="form">
+                                    <div class="form-group">
+                                        <label class="col-sm-5 control-label">Период действия акции:</label>
+                                        <div class="col-sm-7">
+                                            <p class="form-control-static">
+                                                {{ action.fromDate|date("d.m.Y") }}
+                                                -
+                                                {{ action.toDate|date("d.m.Y") }}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-5 control-label">Время работы парсера:</label>
+                                        <div class="col-sm-7">
+                                            <p class="form-control-static">
+                                                {{ action.getRunHistory().getStartDate()|date("d.m.Y H:i:s") }}
+                                                -
+                                                {{ action.getRunHistory().getEndDate()|date("d.m.Y H:i:s") }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="navigation">
+                {{ knp_pagination_render(actionsPagination) }}
+            </div>
+        {% else %}
+            Нет акций
+        {% endif %}
+    </div>
+</div>

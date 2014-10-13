@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Регионы</div>
+    <div class="panel-body">
+        <div class="list-group">
+            {% if regions|length > 0 %}
+                {% for region in regions %}
+                    <a href="{{ path('homepage', {'regionId': region.id}) }}" class="list-group-item {% if region.id == currentRegionId %}active{% endif %}">{{ region.fullName }}</a>
+                {% endfor %}
+            {% else %}
+                Нет регионов
+            {% endif %}
+        </div>
+    </div>
+</div>

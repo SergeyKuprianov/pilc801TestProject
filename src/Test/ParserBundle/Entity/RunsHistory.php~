@@ -1,0 +1,55 @@
+<?php
+
+namespace Test\ParserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * RunsHistory
+ *
+ * @ORM\Table(name="history_of_parser_runs", options={"collate"="utf8_general_ci", "charset"="utf8"})
+ * @ORM\Entity()
+ */
+class RunsHistory
+{
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="run_type", type="datetime", nullable=false)
+     */
+    private $runType;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="start_date", type="datetime", nullable=false)
+     */
+    private $startDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end_date", type="datetime", nullable=false)
+     */
+    private $endDate;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}
